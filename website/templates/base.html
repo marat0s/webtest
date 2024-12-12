@@ -16,7 +16,7 @@
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous"
     />
-    <title>{% block title %}Home{% endblock %}</title>
+    <title>{% block title %}Домашняя страница{% endblock %}</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -34,14 +34,14 @@
     <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
             {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="/">Home</a>
+                <a class="nav-item nav-link" href="/">Домашняя страница</a>
                 {% if user.is_admin %}
-                <a class="nav-item nav-link" href="{{ url_for('admin_bp.admin_panel') }}">Admin Panel</a>
+                <a class="nav-item nav-link" href="{{ url_for('admin_bp.admin_panel') }}">Админская</a>
                 {% endif %}
-                <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Выйти</a>
             {% else %}
-                <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Login</a>
-                <a class="nav-item nav-link" href="{{ url_for('auth.sign_up') }}">Sign Up</a>
+                <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Войти</a>
+                <a class="nav-item nav-link" href="{{ url_for('auth.sign_up') }}">Регистрация</a>
             {% endif %}
         </div>
     </div>

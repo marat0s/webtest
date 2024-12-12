@@ -32,9 +32,9 @@ def login():
                 else:
                     return redirect(url_for('routes.home'))
             else:
-                flash('Incorrect password. Please try again.', category='error')
+                flash('Неправильный пароль.', category='error')
         else:
-            flash('Username does not exist. Please sign up first.', category='error')
+            flash('Пользователя не существует.', category='error')
 
     return render_template("login.html", user=current_user)
 
@@ -64,7 +64,7 @@ def sign_up():
             new_user = User(
                 username=username, 
                 password=generate_password_hash(password, method='sha256'),
-                is_admin=False  # Adjust this if you want the user to be admin by default.
+                is_admin=False  # Поменять если нужен админ по дефолту.
             )
             db.session.add(new_user)
             db.session.commit()

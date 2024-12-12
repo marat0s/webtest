@@ -23,10 +23,12 @@ def create_app():
     # Import Blueprints
     from .routes import routes
     from .auth import auth
+    from .admin import admin_bp
 
     # Register Blueprints
     app.register_blueprint(routes, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(admin_bp, url_prefix='/')
 
     # Import models after app and db are set up
     from .models import User
