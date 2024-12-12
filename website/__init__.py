@@ -12,7 +12,7 @@ def create_app():
     
     # Application configuration
     app.config['SECRET_KEY'] = 'jeofejafoiaejfoihjof'
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:12345@localhost:5432"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:qwerty@localhost:5432"
     app.config['SQLALCHEMY_BINDS'] = {
         "auth": "postgresql://postgres:qwerty@localhost:5432/auth"
     }

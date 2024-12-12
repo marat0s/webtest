@@ -62,7 +62,7 @@ def sign_up():
             # Create a new user and hash their password
             new_user = User(
                 username=username, 
-                password=generate_password_hash(password, method='sha256'),
+                password=generate_password_hash(password, method='pbkdf2:sha256'),
                 is_admin=False  # Поменять если нужен админ по дефолту.
             )
             db.session.add(new_user)

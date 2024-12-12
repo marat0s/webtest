@@ -26,7 +26,7 @@ def admin_panel():
         else:
             new_user = User(
                 username=username,
-                password=generate_password_hash(password, method='sha256'),
+                password=generate_password_hash(password, method='pbkdf2:sha256'),
                 is_admin=False
             )
             db.session.add(new_user)
@@ -47,7 +47,7 @@ def reset_password(user_id):
     new_password = request.form.get('new_password')
     user = User.query.get(user_id)
     if user:
-        user.password = generate_password_hash(new_password, method='sha256')
+        user.password = generate_password_hash(new_password, method='pbkdf2:sha256')
         db.session.commit()
         flash('Пароль сброшен!', category='success')
     else:
