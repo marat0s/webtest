@@ -25,10 +25,9 @@ def login():
                 flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
 
-                # If the user is an admin, optionally redirect to admin panel
-                # Adjust 'admin_bp.admin_panel' and route name to match your admin setup
+            
                 if user.is_admin:
-                    return redirect(url_for('admin_bp.admin_panel'))
+                    return redirect(url_for('admin.admin_panel'))
                 else:
                     return redirect(url_for('routes.home'))
             else:

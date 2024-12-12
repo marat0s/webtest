@@ -8,7 +8,7 @@
 <div class="card mb-4">
     <div class="card-header">Создать пользователя</div>
     <div class="card-body">
-        <form action="{{ url_for('admin_bp.create_user') }}" method="POST">
+        <form action="{{ url_for('admin.create_user') }}" method="POST">
             <div class="form-group">
                 <label for="username">Имя пользователя:</label>
                 <input type="text" name="username" class="form-control" required>
@@ -42,13 +42,13 @@
                 <td>{{ user.username }}</td>
                 <td>{{ 'Да' if user.is_admin else 'Нет' }}</td>
                 <td>
-                    <form action="{{ url_for('admin_bp.reset_password', user_id=user.id) }}" method="POST" class="form-inline">
+                    <form action="{{ url_for('admin.reset_password', user_id=user.id) }}" method="POST" class="form-inline">
                         <input type="password" name="new_password" class="form-control mr-2" placeholder="New Password" required>
                         <button type="submit" class="btn btn-warning">Сбросить</button>
                     </form>
                 </td>
                 <td>
-                    <form action="{{ url_for('admin_bp.delete_user', user_id=user.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                    <form action="{{ url_for('admin.delete_user', user_id=user.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
                         <button type="submit" class="btn btn-danger">Удалить</button>
                     </form>
                 </td>

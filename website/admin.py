@@ -6,9 +6,9 @@ from werkzeug.security import generate_password_hash
 from .models import User
 from . import db
 
-admin_bp = Blueprint('admin_bp', __name__)
+admin = Blueprint('admin', __name__)
 
-@admin_bp.route('/admin', methods=['GET', 'POST'])
+@admin.route('/admin', methods=['GET', 'POST'])
 @login_required
 def admin_panel():
     if not current_user.is_admin:
@@ -32,12 +32,12 @@ def admin_panel():
             db.session.add(new_user)
             db.session.commit()
             flash('Пользователь создан успешно!', category='success')
-            return redirect(url_for('admin_bp.admin_panel'))
+            return redirect(url_for('admin.admin_panel'))
 
     users = User.query.all()
     return render_template('admin.html', user=current_user, users=users)
 
-@admin_bp.route('/reset_password/<int:user_id>', methods=['POST'])
+@admin.route('/reset_password/<int:user_id>', methods=['POST'])
 @login_required
 def reset_password(user_id):
     if not current_user.is_admin:
@@ -53,9 +53,9 @@ def reset_password(user_id):
     else:
         flash('Пользователь не найден.', category='error')
 
-    return redirect(url_for('admin_bp.admin_panel'))
+    return redirect(url_for('admin.admin_panel'))
 
-@admin_bp.route('/delete_user/<int:user_id>', methods=['POST'])
+@admin.route('/delete_user/<int:user_id>', methods=['POST'])
 @login_required
 def delete_user(user_id):
     if not current_user.is_admin:
@@ -70,4 +70,4 @@ def delete_user(user_id):
     else:
         flash('Пользователь не найден.', category='error')
 
-    return redirect(url_for('admin_bp.admin_panel'))
+    return redirect(url_for('admin.admin_panel'))

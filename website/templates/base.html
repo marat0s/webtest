@@ -36,7 +36,7 @@
             {% if user.is_authenticated %}
                 <a class="nav-item nav-link" href="/">Домашняя страница</a>
                 {% if user.is_admin %}
-                <a class="nav-item nav-link" href="{{ url_for('admin_bp.admin_panel') }}">Админская</a>
+                <a class="nav-item nav-link" href="{{ url_for('admin.admin_panel') }}">Админская</a>
                 {% endif %}
                 <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Выйти</a>
             {% else %}
