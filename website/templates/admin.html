@@ -57,12 +57,12 @@
                 </td>
                 <td>
                     <form action="{{ url_for('admin.reset_password', user_id=user.id) }}" method="POST" class="form-inline">
-                        <input type="password" name="new_password" class="form-control mr-2" placeholder="New Password" required>
+                        <input type="password" name="new_password" class="form-control mr-2" placeholder="Новый пароль" required>
                         <button type="submit" class="btn btn-warning">Сбросить</button>
                     </form>
                 </td>
                 <td>
-                    <form action="{{ url_for('admin.delete_user', user_id=user.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                    <form action="{{ url_for('admin.delete_user', user_id=user.id) }}" method="POST" onsubmit="return confirm('Вы действительно хотите удалить пользователя?');">
                         <button type="submit" class="btn btn-danger">Удалить</button>
                     </form>
                 </td>
