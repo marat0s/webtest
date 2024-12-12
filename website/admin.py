@@ -71,3 +71,22 @@ def delete_user(user_id):
         flash('Пользователь не найден.', category='error')
 
     return redirect(url_for('admin.admin_panel'))
+
+# website/admin.py
+
+@admin.route('/grant_admin/<int:user_id>', methods=['POST'])
+@login_required
+def grant_admin(user_id):
+    if not current_user.is_admin:
+        flash('У вас нет прав на это действие.', category='error')
+        return redirect(url_for('routes.home'))
+
+    user = User.query.get(user_id)
+    if user:
+        user.is_admin = True
+        db.session.commit()
+        flash('Админские права предоставлены!', category='success')
+    else:
+        flash('Пользователь не найден.', category='error')
+
+    return redirect(url_for('admin.admin_panel'))
