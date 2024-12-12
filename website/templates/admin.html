@@ -50,7 +50,9 @@
                         <button type="submit" class="btn btn-success">Назначить админом</button>
                     </form>
                     {% else %}
-                    <span>Админ</span>
+                    <form action="{{ url_for('admin.revoke_admin', user_id=user.id) }}" method="POST">
+                        <button type="submit" class="btn btn-warning">Отменить админство</button>
+                    </form>
                     {% endif %}
                 </td>
                 <td>

@@ -2,10 +2,6 @@ from flask_login import UserMixin
 from . import db
 
 class User(db.Model, UserMixin):
-    """
-    User model representing authenticated users.
-    Bound to the 'auth' database.
-    """
     __bind_key__ = 'auth'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), unique=True, nullable=False)
