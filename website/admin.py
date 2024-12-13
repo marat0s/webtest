@@ -97,6 +97,10 @@ def revoke_admin(user_id):
     if not current_user.is_admin:
         flash('У вас нет прав на это действие.', category='error')
         return redirect(url_for('routes.home'))
+    
+    if user_id == current_user.id:
+        flash('Вы не можете отозвать свои собственные админские права.', category='error')
+        return redirect(url_for('admin.admin_panel'))
 
     user = User.query.get(user_id)
     if user:
