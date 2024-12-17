@@ -11,7 +11,7 @@ pip install -r requirements.txt
 3
 ```bash
 flask -app main.py run
-```орт
+```
 
 ### Нужно вписать в __init__.py свое имя базы данных, пароль и порт (порт по умолчанию 5432):
     app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://имябазыданных:пароль@localhost:порт"
