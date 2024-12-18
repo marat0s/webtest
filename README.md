@@ -10,7 +10,7 @@ pip install -r requirements.txt
 ```
 3
 ```bash
-flask -app main.py run
+flask --app main.py run
 ```
 
 ### Нужно вписать в __init__.py свое имя базы данных, пароль и порт (порт по умолчанию 5432):
